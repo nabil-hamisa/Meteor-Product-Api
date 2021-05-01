@@ -1,0 +1,44 @@
+###  Brands ###  Brands ###  Brands ###  Brands
+
+GET  {{host}}/api/brands
+Accept: application/json
+
+### Get all brands
+GET  {{host}}/api/brands/em8L7B8YziQiWNqpQ
+Accept: application/json
+
+### Get brand by id
+
+POST   {{host}}/api/brands
+Content-Type: application/json
+
+{"name": "pUMa"}
+
+###Add new brand
+
+
+PUT   {{host}}/api/brands/zZgfSF3CKDuZChpwG
+Content-Type: application/json
+
+{"name": "aDidas"}
+###Edit  brand name
+
+DELETE   {{host}}/api/brands/MTk6MPcp4CWmwN3ZTde
+Content-Type: application/json
+
+###Delete brand
+
+
+
+###  Products ###  Products ###  Products ###  Products
+GET {{host}}/api/products
+Accept: application/json
+
+### Get all products
+
+GET {{host}}/api/products/:id
+Accept: application/json
+
+### Get all product by id
+
+

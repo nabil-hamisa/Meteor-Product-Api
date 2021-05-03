@@ -11,7 +11,6 @@ export default new SimpleSchema({
         "category.$": {
             type: String,
         },
-
         promotion: {type: Array, optional: true},
         "promotion.$": {
             type: String,

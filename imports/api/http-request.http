@@ -1,10 +1,11 @@
+
 ###  Brands ###  Brands ###  Brands ###  Brands
 
 GET  {{host}}/api/brands
 Accept: application/json
 
 ### Get all brands
-GET  {{host}}/api/brands/em8L7B8YziQiWNqpQ
+GET  {{host}}/api/brands/zZgfSF3CKDuZChpwG
 Accept: application/json
 
 ### Get brand by id
@@ -20,13 +21,66 @@ Content-Type: application/json
 PUT   {{host}}/api/brands/zZgfSF3CKDuZChpwG
 Content-Type: application/json
 
-{"name": "aDidas"}
+{"name": "Adidas"}
 ###Edit  brand name
 
 DELETE   {{host}}/api/brands/MTk6MPcp4CWmwN3ZTde
 Content-Type: application/json
 
 ###Delete brand
+
+###  Category ###  Category ###  Category ###  Category
+
+POST   {{host}}/api/category/
+Content-Type: application/json
+
+{
+  "name": "jeans",
+  "parent": ""
+}
+
+###add Category
+
+GET  {{host}}/api/category/
+Accept: application/json
+
+### get all category
+
+GET  {{host}}/api/category/bsiMfhvbB5ypXW2ge
+Accept: application/json
+
+### get  a category by id
+
+GET  {{host}}/api/category/sub_Category/2Z758ggq5Q7wsGX4T
+Accept: application/json
+
+### get sub category of a given parent id
+
+GET  {{host}}/api/category/root_category/
+Accept: application/json
+
+### get  all header cateogry
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

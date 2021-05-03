@@ -61,9 +61,8 @@ JsonRoutes.add('GET', '/api/brands/:brandId', function (req, res) {
 
 JsonRoutes.add('POST', '/api/brands', function (req, res) {
     try {
-        const exist=Brand.findOne({name:req.body.name.toLowerCase()});
-        console.log(exist)
-        if(!exist){
+        const exist = Brand.findOne({name: req.body.name.toLowerCase()});
+        if (!exist) {
             const id = Brand.insert({
                 name: req.body.name,
             });
@@ -73,11 +72,11 @@ JsonRoutes.add('POST', '/api/brands', function (req, res) {
                     _id: id,
                 },
             });
-        }else{
+        } else {
             JsonRoutes.sendResult(res, {
                 code: 200,
                 data: {
-                    error:"Brand already exist "
+                    error: "Brand already exist "
                 },
             });
         }
@@ -88,8 +87,6 @@ JsonRoutes.add('POST', '/api/brands', function (req, res) {
         });
     }
 });
-
-
 JsonRoutes.add('PUT', '/api/brands/:brandId', (req, res) => {
         const id = req.params.brandId;
         console.log(id)

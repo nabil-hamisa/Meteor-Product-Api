@@ -165,6 +165,15 @@ Accept: application/json
 
 ### Get all products
 
+GET {{host}}/api/products/brand/zZgfSF3CKDuZChpwG
+Accept: application/json
+
+### Get all products with the specific brand
+GET {{host}}/api/products/category/dPamQbbFR
+Accept: application/json
+
+### Get all products with the specific Category
+
 GET {{host}}/api/products/PWiQYmyvuas6jbc62
 Accept: application/json
 

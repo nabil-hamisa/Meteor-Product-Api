@@ -6,10 +6,8 @@ const Product = new Mongo.Collection('product');
 //const filters=['name','price','brand',]
 
 Product.attachSchema(productSchema);
-//todo get product by brand
-//todo get product by  price
-//todo get product by criteria
-//Todo get prodcut by price async /desc
+
+
 //TODO get prodcut by category
 //TODO FILTER BY popular  still missing order api to consume
 //Todo create collection  for productImnages
@@ -97,6 +95,53 @@ JsonRoutes.add('GET', '/api/products/:productId', function (req, res) {
         });
     }
 });
+JsonRoutes.add('GET', '/api/products/brand/:brandId', function (req, res) {
+        const brandId = req.params.brandId
+        JsonRoutes.sendResult(res, {
+            code: 200,
+            data: Product.find({brandId: brandId}).map(function (doc) {
+                return {
+                    _id: doc._id,
+                    name: doc.name,
+                    price: doc.price,
+                    stock: doc.stock,
+                    description: doc.description,
+                    brand: doc.brandId,
+                    category: doc.category,
+                    criteria: doc.criteria,
+                    promotion: doc.promotion,
+                    hadPromotion: doc.hadPromotion,
+                    hadCritiria: doc.hadCritiria,
+                };
+            }),
+        });
+    },
+);
+
+JsonRoutes.add('GET', '/api/products/category/:categoryId', function (req, res) {
+        const categoryId = req.params.categoryId
+        JsonRoutes.sendResult(res, {
+            code: 200,
+            data: Product.find({category: {$in: [categoryId]}}).map(function (doc) {
+                return {
+                    _id: doc._id,
+                    name: doc.name,
+                    price: doc.price,
+                    stock: doc.stock,
+                    description: doc.description,
+                    brand: doc.brandId,
+                    category: doc.category,
+                    criteria: doc.criteria,
+                    promotion: doc.promotion,
+                    hadPromotion: doc.hadPromotion,
+                    hadCritiria: doc.hadCritiria,
+                };
+            }),
+        });
+    },
+);
+
+
 JsonRoutes.add('POST', '/api/products', function (req, res) {
     try {
 
@@ -200,6 +245,11 @@ JsonRoutes.add('PUT', '/api/products/:productId', (req, res) => {
             if (req.body.hasOwnProperty('criteria')) {
                 Product.update(
                     {_id: productId}, {$set: {criteria: req.body.criteria}},
+                );
+            }
+            if (req.body.hasOwnProperty('promotion')) {
+                Product.update(
+                    {_id: productId}, {$set: {promotion: req.body.promotion}},
                 );
             }
             JsonRoutes.sendResult(res, {

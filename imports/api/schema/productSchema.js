@@ -4,8 +4,8 @@ export default new SimpleSchema({
         name: {type: String, min: 1, max: 255, optional: false},
         price: {type: Number, min: 0, optional: false},
         stock: {type: SimpleSchema.Integer, min: 0, optional: false},
-        description: {type: String, optional: true},
-        brandId: {type: String, optional: false},
+        description: {type: String, optional: false},
+        brandId: {type: String,min: 1, max: 700, optional: false},
         category: {
             type: Array,
             optional: true,

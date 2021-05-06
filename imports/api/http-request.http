@@ -30,6 +30,12 @@ Content-Type: application/json
 ###Delete brand
 
 
+
+
+
+
+
+
 ###  Category ###  Category ###  Category ###  Category
 GET  {{host}}/api/category/
 Accept: application/json
@@ -153,34 +159,52 @@ Content-Type: application/json
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###  Products ###  Products ###  Products ###  Products
 GET {{host}}/api/products
 Accept: application/json
 
 ### Get all products
 
-GET {{host}}/api/products/:id
+GET {{host}}/api/products/PWiQYmyvuas6jbc62
 Accept: application/json
 
 ### Get all product by id
 
+
+POST   {{host}}/api/products
+Content-Type: application/json
+
+{
+  "name": "pull",
+  "price": 1,
+  "stock": 50,
+  "description": "THis Product is the best",
+  "brandId": "zZgfSF3CKDuZChpwG",
+  "category": ["dPamQbbFRTNqXffwG"],
+  "criteria": ["Wn3nveoYBskpzTYeF"]
+}
+
+### add new  product
+
+
+PUT   {{host}}/api/products/PWiQYmyvuas6jbc62
+Content-Type: application/json
+
+{
+  "name": "pull",
+  "price": 2,
+  "stock": 60,
+  "description": "THis Product is  the best",
+  "brandId": "zZgfSF3CKDuZChpwG+1",
+  "category": ["dPamQbbFRTNqXffwG"],
+  "criteria": ["Wn3nveoYBskpzTYeF"]
+}
+
+### add new  product
+
+
+DELETE   {{host}}/api/products/QdacDjxMzpgYbeHgM
+Content-Type: application/json
+
+###Delete product
 

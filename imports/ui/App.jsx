@@ -14,7 +14,6 @@ export const App = () => {
 
     }, [])
 
-
     return (
         <div className="root">
             <ProductForm/>

@@ -29,18 +29,8 @@ Content-Type: application/json
 
 ###Delete brand
 
+
 ###  Category ###  Category ###  Category ###  Category
-
-POST   {{host}}/api/category/
-Content-Type: application/json
-
-{
-  "name": "jeans",
-  "parent": ""
-}
-
-###add Category
-
 GET  {{host}}/api/category/
 Accept: application/json
 
@@ -51,7 +41,7 @@ Accept: application/json
 
 ### get  a category by id
 
-GET  {{host}}/api/category/sub_Category/2Z758ggq5Q7wsGX4T
+GET  {{host}}/api/category/sub_Category/GaQkR6sesk6PGL3bo
 Accept: application/json
 
 ### get sub category of a given parent id
@@ -60,6 +50,104 @@ GET  {{host}}/api/category/root_category/
 Accept: application/json
 
 ### get  all header cateogry
+POST   {{host}}/api/category/
+Content-Type: application/json
+
+{
+  "name": "troll",
+  "parent": ""
+}
+
+###add Category
+
+PUT   {{host}}/api/category/GaQkR6sesk6PGL3bo
+Content-Type: application/json
+
+{
+  "name": "",
+  "parent": "/"
+}
+###Edit  category
+
+
+DELETE   {{host}}/api/category/GaQkR6sesk6PGL3bo
+Content-Type: application/json
+
+###Delete category
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###  Criteria ###  Criteria ###  Criteria ###  Criteria
+
+GET  {{host}}/api/criteria/
+Accept: application/json
+
+### get all criteria
+
+GET  {{host}}/api/criteria/Wn3nveoYBskpzTYeF
+Accept: application/json
+
+### get  a criteria by id
+
+### get  all header cateogry
+POST   {{host}}/api/criteria/
+Content-Type: application/json
+
+{
+  "name": "size",
+  "value": ["xs","s","m","l","xl","xxl","xxl"],
+  "isColor":false
+}
+
+###add criteria
+
+PUT   {{host}}/api/criteria/Wn3nveoYBskpzTYeF
+Content-Type: application/json
+
+{
+  "name": "size",
+  "isColor": false
+}
+###Edit  criteria name and is color
+
+
+DELETE   {{host}}/api/criteria/RWytJFqgqNhpQ3mfN
+Content-Type: application/json
+
+###Delete criteria
+
+PUT   {{host}}/api/criteria/Wn3nveoYBskpzTYeF/value
+Content-Type: application/json
+
+{
+  "value":["m"]
+}
+###add value of criteria to the array note dosent add duplicated values or already inserted
+
+
+DELETE  {{host}}/api/criteria/Wn3nveoYBskpzTYeF/value
+Content-Type: application/json
+
+{
+  "value":["troll","trol2"]
+}
+###add value of criteria to the array
+
+
+
 
 
 

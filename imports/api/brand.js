@@ -10,7 +10,6 @@ Meteor.methods({
         return Brand.find({}).fetch()
     },
     'brand.insert'(data) {
-        1
         return Brand.insert({
             name: data.name,
         })
@@ -30,6 +29,7 @@ Meteor.methods({
 
 /* Get ALl brands */
 JsonRoutes.add('GET', '/api/brands', function (req, res) {
+    try {
         JsonRoutes.sendResult(res, {
             code: 200,
             data: Brand.find({}).map(function (doc) {
@@ -39,8 +39,13 @@ JsonRoutes.add('GET', '/api/brands', function (req, res) {
                 };
             }),
         });
-    },
-);
+    } catch (error) {
+        JsonRoutes.sendResult(res, {
+            code: 404,
+            data: error,
+        });
+    }
+});
 
 JsonRoutes.add('GET', '/api/brands/:brandId', function (req, res) {
     try {

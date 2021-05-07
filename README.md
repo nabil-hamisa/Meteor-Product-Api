@@ -3,6 +3,9 @@
 1-install meteor 
 https://www.meteor.com/developers/install
 
-at the current directory run 
-1-meteor npm install 
-2-meteor run
+<h3> At project directory run this two commands </h3>
+<ol>
+<li>meteor npm install </li>
+<li>meteor run</li>
+</ol>
+api good to go 

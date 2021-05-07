@@ -1,0 +1,724 @@
+swagger: '2.0'
+info:
+  description: This is a Products API
+  version: 1.0.0
+  title:  Welcome to  Products API
+  contact:
+    email: nabil.hamissa@gmail.com
+tags:
+  - name: Product
+    description: Everything about products
+  - name: Brand
+    description: Everything about Brand
+  - name: Category
+    description: Everything about Category
+  - name: Criteria
+    description: Everything about Criteria
+schemes:
+  - http
+paths:
+  /api/products:
+    get:
+      tags:
+        - Product
+      summary: Get all products
+      description: returns all Products available
+      operationId: getProducts
+      produces:
+        - application/json
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        400:
+          description: something bad happends
+    post:
+      tags:
+        - Product
+      summary: Add a new Product
+      operationId: addProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Product object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        200:
+          description: Product added successfully
+          schema:
+            $ref: '#/definitions/Rid'
+        400:
+          description: Error Message
+  /api/products/{productId}:
+    get:
+      tags:
+        - Product
+      summary: Find product by ID
+      description: Returns a single Product
+      operationId: getProductById
+      produces:
+        - application/json
+      parameters:
+        - name: productId
+          in: path
+          description: ID of Product to return
+          required: true
+          type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Product'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Product not found
+    put:
+      tags:
+        - Product
+      summary: Update Product by ID
+      description: You can update the whole  product or a single field
+      operationId: updateProduct
+      produces:
+        - application/json
+      parameters:
+        - name: productId
+          in: path
+          description: productId that need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Product with given id
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Product'
+        404:
+          description: Product not found
+    delete:
+      tags:
+        - Product
+      summary: Deletes Product by ID
+      operationId: deleteProduct
+      produces:
+        - application/json
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        404:
+          description: Product not found
+
+  /api/products/brand/{brandId}:
+    get:
+      tags:
+        - Product
+      summary: Find product that have same brand ID
+      description: Returns All products that much same Brand ID
+      operationId: getProductsByBrands
+      produces:
+        - application/json
+      parameters:
+        - name: brandId
+          in: path
+          description: ID of Brand to return
+          required: true
+          type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        400:
+          description: Invalid ID supplied
+  /api/products/category/{categoryId}:
+    get:
+      tags:
+        - Product
+      summary: Find product that have same Category ID
+      description: Returns All products that much same Category ID
+      operationId: getProductsByCategory
+      produces:
+        - application/json
+      parameters:
+        - name: categoryId
+          in: path
+          description: ID of Category to return
+          required: true
+          type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        400:
+          description: Invalid ID supplied
+  /api/brands:
+    get:
+      tags:
+        - Brand
+      summary: Get all Brands
+      description: returns all Brands available
+      operationId: getBrands
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Brand'
+        "400":
+          description: something bad happends
+    post:
+      tags:
+        - Brand
+      summary: Add a new Brand
+      operationId: addBrand
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Brand object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Brand'
+      responses:
+        "200":
+          description: Brand added successfully
+          schema:
+            $ref: '#/definitions/Rid'
+        "400":
+          description: Error Message
+  /api/brands/{BrandId}:
+    get:
+      tags:
+        - Brand
+      summary: Find Brand by ID
+      description: Returns a single Brand
+      operationId: getBrandById
+      produces:
+        - application/json
+      parameters:
+        - name: BrandId
+          in: path
+          description: ID of Brand to return
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Brand'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Brand not found
+    put:
+      tags:
+        - Brand
+      summary: Update Brand by ID
+      description: You can update the whole  product or a single field
+      operationId: updateBrand
+      produces:
+        - application/json
+      parameters:
+        - name: BrandId
+          in: path
+          description: brandId that need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Brand with given id
+          required: true
+          schema:
+            $ref: '#/definitions/Brand'
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Brand'
+        "404":
+          description: Brand not found
+    delete:
+      tags:
+        - Brand
+      summary: Delete Brand by ID
+      operationId: deleteBrand
+      produces:
+        - application/json
+      parameters:
+        - name: BrandId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        "404":
+          description: Brand not found
+  /api/criteria:
+    get:
+      tags:
+        - Criteria
+      summary: Get all Criterias
+      description: returns all Criteria available
+      operationId: getCriterias
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Criteria'
+        "400":
+          description: something bad happends
+    post:
+      tags:
+        - Criteria
+      summary: Add a new Criteria
+      operationId: addCriteria
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Criteria object that needs to be added
+          required: true
+          schema:
+            $ref: '#/definitions/Criteria'
+      responses:
+        "200":
+          description: Brand added successfully
+          schema:
+            $ref: '#/definitions/Rid'
+        "400":
+          description: Error Message
+  /api/criteria/{CriteriaId}:
+    get:
+      tags:
+        - Criteria
+      summary: Find Criteria by ID
+      description: Returns a single Criteria
+      operationId: getCriteriaById
+      produces:
+        - application/json
+      parameters:
+        - name: CriteriaId
+          in: path
+          description: ID of Criteria to return
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Criteria'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Brand not found
+    put:
+      tags:
+        - Criteria
+      summary: Update Criteria by ID
+      description: You can update the whole  Criteria or a single field
+      operationId: updateCriteria
+      produces:
+        - application/json
+      parameters:
+        - name: CriteriaId
+          in: path
+          description: CriteriaId that need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Criteria with given id
+          required: true
+          schema:
+            $ref: '#/definitions/Criteria'
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Criteria'
+        "404":
+          description: Criteria not found
+    delete:
+      tags:
+        - Criteria
+      summary: Delete Criteria by ID
+      operationId: deleteCriteria
+      produces:
+        - application/json
+      parameters:
+        - name: CriteriaId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        "404":
+          description: Criteria not found
+  /api/criteria/{CriteriaId}/value:
+    put:
+      tags:
+        - Criteria
+      summary: add  Value to  a specific Criteria by ID
+      description: You can add  value for a  criteria
+      operationId: updateValueCriteria
+      produces:
+        - application/json
+      parameters:
+        - name: CriteriaId
+          in: path
+          description: CriteriaId that need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Criteria with given id
+          required: true
+          schema:
+            $ref: '#/definitions/value'
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        "404":
+          description: Criteria not found
+    delete:
+      tags:
+        - Criteria
+      summary: Delete Value of a specific Criteria by ID
+      operationId: deleteCriteriaVlaue
+      produces:
+        - application/json
+      parameters:
+        - name: CriteriaId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        "404":
+          description: Criteria not found
+
+
+  /api/category:
+    get:
+      tags:
+        - Category
+      summary: Get all Category
+      description: returns all Category available
+      operationId: getCategorys
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        "400":
+          description: something bad happends
+    post:
+      tags:
+        - Category
+      summary: Add a new Category
+      operationId: addCategory
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: Category object that needs to be added  becarful if you dont add parent it will be rooted to the head   /
+          required: true
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        "200":
+          description: Category added successfully
+          schema:
+            $ref: '#/definitions/Rid'
+        "400":
+          description: Error Message
+  /api/category/{CategoryId}:
+    get:
+      tags:
+        - Category
+      summary: Find Category by ID
+      description: Returns a single Category
+      operationId: getCategoryById
+      produces:
+        - application/json
+      parameters:
+        - name: CategoryId
+          in: path
+          description: ID of Category to return
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Category'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Category not found
+    put:
+      tags:
+        - Category
+      summary: Update Category by ID
+      description: You can update the whole  Category or a single field
+      operationId: updateCategorys
+      produces:
+        - application/json
+      parameters:
+        - name: CategoryId
+          in: path
+          description: Category that need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update Category with given id
+          required: true
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Category'
+        "404":
+          description: Criteria not found
+    delete:
+      tags:
+        - Category
+      summary: Delete Category by ID
+      operationId: deleteCategory
+      produces:
+        - application/json
+      parameters:
+        - name: CategoryId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Rid'
+        "404":
+          description: Category not found
+  /api/category/sub_Category/{parentId}:
+    get:
+      tags:
+        - Category
+      summary: Find Sub categorys of a given Category ID
+      description: Returns a multiple sub Category
+      operationId: getSubCategorysById
+      produces:
+        - application/json
+      parameters:
+        - name: parentId
+          in: path
+          description: ID of Category to return
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Category not found
+  /api/category/root_category:
+    get:
+      tags:
+        - Category
+      summary: Get all Root Categorys
+      description: returns all Root Category available
+      operationId: getRootCategorys
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        "400":
+          description: something bad happends
+definitions:
+
+  Product:
+    type: object
+    required:
+      - name
+      - price
+      - stock
+      - description
+      - brandId
+    properties:
+      _id:
+        type: string
+        example: Wn3nveoYBskpzTYeF
+      name:
+        type: string
+        example: jeans
+      price:
+        type: number
+        example: 5000
+      stock:
+        type: integer
+        example: 52
+      description:
+        type: string
+        example: this product is high quality
+      brandId:
+        type: string
+        example: Wn3nveoYBskpzTYeF
+      category:
+        type: array
+        items:
+          type: string
+          example: Wn3nveoYBskpzTYeF
+      criteria:
+        type: array
+        items:
+          type: string
+          example: Wn3nveoYBskpzTYeF
+      promotion:
+        type: array
+        items:
+          type: string
+          example: Wn3nveoYBskpzTYeF
+      hadPromotion:
+        type: boolean
+        default: false
+      hadCritiria:
+        type: boolean
+        default: false
+
+  Brand:
+    type: object
+    required:
+      - name
+    properties:
+      _id:
+        type: string
+        example: Wn3nveoYBskpzTYeF
+      name:
+        type: string
+        example: Gucci
+  Criteria:
+    type: object
+    required:
+      - name
+    properties:
+      _id:
+        type: string
+        example: Wn3nveoYBskpzTYeF
+      name:
+        type: string
+        example: Color
+      value:
+        type: array
+        items:
+          type: string
+          example: [blue,orange,red]
+      isColor:
+        type: boolean
+        default: true
+  value:
+    type: object
+    required:
+      - value
+    properties:
+      value:
+        type: array
+        items:
+          type: string
+          example: [blue,orange,red]
+  Category:
+    type: object
+    required:
+      - name
+    properties:
+      _id:
+        type: string
+        example: Wn3nveoYBskpzTYeF
+      name:
+        type: string
+        example: 'man'
+      parent:
+        type: string
+        example: '/jeans'
+      category:
+        type: string
+        example: '/jeans/man'
+
+  Rid:
+    type: object
+    properties:
+      _id:
+        type: string
+        example: Wn3nveoYBskpzTYeF

@@ -153,6 +153,7 @@ JsonRoutes.add('POST', '/api/products', function (req, res) {
             brandId: req.body.brandId,
             category: req.body.category,
             criteria: req.body.criteria,
+            promotion:req.body.promotion,
             hadCritiria: req.body.category.length > 0
 
         });

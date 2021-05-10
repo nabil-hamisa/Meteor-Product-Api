@@ -180,39 +180,41 @@ Accept: application/json
 ### Get all product by id
 
 
-POST   {{host}}/api/products
+POST   {{host}}/api/products/
 Content-Type: application/json
 
 {
-  "name": "pull",
+  "name": "troll",
   "price": 1,
   "stock": 50,
   "description": "THis Product is the best",
   "brandId": "zZgfSF3CKDuZChpwG",
   "category": ["dPamQbbFRTNqXffwG"],
   "criteria": ["Wn3nveoYBskpzTYeF"]
+
 }
 
-### add new  product
+### add new  productddd
 
 
-PUT   {{host}}/api/products/PWiQYmyvuas6jbc62
+PUT   {{host}}/api/products/uXr98HEtpa9oiGGJ6
 Content-Type: application/json
 
 {
-  "name": "pull",
+  "name": "trolll",
   "price": 2,
   "stock": 60,
   "description": "THis Product is  the best",
   "brandId": "zZgfSF3CKDuZChpwG+1",
   "category": ["dPamQbbFRTNqXffwG"],
-  "criteria": ["Wn3nveoYBskpzTYeF"]
+  "criteria": ["Wn3nveoYBskpzTYeF"],
+  "promotion": ["3 "]
 }
 
 ### add new  product
 
 
-DELETE   {{host}}/api/products/QdacDjxMzpgYbeHgM
+DELETE   {{host}}/api/products/pzjByebHTZmeYSWLQ
 Content-Type: application/json
 
 ###Delete product

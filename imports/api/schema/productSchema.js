@@ -10,6 +10,11 @@ export default new SimpleSchema({
             type: Array,
             optional: true,
             blackbox: true,
+            autoValue: function () {
+                if (! this.isSet ) {
+                    return [];
+                }
+            }
         },
         'category.$': {
             type: String, min: 1, max: 255, optional: true,
@@ -18,19 +23,30 @@ export default new SimpleSchema({
         criteria: {
             type: Array,
             optional: true,
-            blackbox: true
+            blackbox: true,
+            autoValue: function () {
+                if (! this.isSet ) {
+                    return [];
+                }
+            }
         },
         'criteria.$': {
             type: String, min: 1, max: 255, optional: true,
-
         },
         promotion: {
             type: Array,
             blackbox: true,
-            optional: true
+            optional: true,
+            autoValue: function () {
+                if (! this.isSet ) {
+                    return [];
+                }
+            }
         },
         'promotion.$': {
-            type: String, min: 1, max: 255, optional: true
+            type: String, min: 1, max: 255, optional: true,
+
+
         },
         hadPromotion: {type: Boolean, defaultValue: false},
         hadCritiria: {type: Boolean, defaultValue: false},
